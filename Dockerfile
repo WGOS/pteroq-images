@@ -3,9 +3,9 @@
 # Environment: Java (glibc support)
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
-FROM        openjdk:8-jre-slim
+FROM        zulu-openjdk:8
 
-LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
+LABEL       author="WGOS" maintainer="wgos@penek-gaming.ru"
 
 RUN apt-get update -y \
  && apt-get install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
