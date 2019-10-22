@@ -5,6 +5,8 @@
 # ----------------------------------
 FROM        azul/zulu-openjdk:8u232
 
+ENV         TZ=Europe/Moscow
+
 LABEL       author="WGOS" maintainer="wgos@penek-gaming.ru"
 
 RUN apt-get update -y \
