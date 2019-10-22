@@ -1,6 +1,8 @@
 #!/bin/bash
 cd /home/container
 
+echo "Running on Alpine $(cat /etc/alpine-release)"
+
 # Output Current Java Version
 java -version
 
