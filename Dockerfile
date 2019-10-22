@@ -3,7 +3,7 @@
 # Environment: Java (glibc support)
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
-FROM	azul/zulu-openjdk-alpine:8u222
+FROM	azul/zulu-openjdk-alpine:8u222-jre
 
 LABEL	author="WGOS" maintainer="wgos@penek-gaming.ru"
 
