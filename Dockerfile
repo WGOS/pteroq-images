@@ -3,14 +3,12 @@
 # Environment: Java (glibc support)
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
-FROM        azul/zulu-openjdk-debian:8u222
-
-ENV         TZ=Europe/Moscow
+FROM        azul/zulu-openjdk:8u222
 
 LABEL       author="WGOS" maintainer="wgos@penek-gaming.ru"
 
 RUN apt-get update -y \
- && apt-get install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
+ && apt-get install -y iproute2 \
  && useradd -d /home/container -m container
  
 USER container
