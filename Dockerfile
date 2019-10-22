@@ -3,7 +3,7 @@
 # Environment: Java (glibc support)
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
-FROM        azul/zulu-openjdk:8u232
+FROM        azul/zulu-openjdk-debian:8u222
 
 ENV         TZ=Europe/Moscow
 
