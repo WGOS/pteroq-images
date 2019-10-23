@@ -3,22 +3,18 @@
 # Environment: Java (glibc support)
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
-FROM        adoptopenjdk/openjdk8-openj9:debian-slim
+FROM	adoptopenjdk/openjdk8-openj9:alpine-slim
 
-LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
+LABEL	author="WGOS"
 
-RUN apt-get update -y \
- && apt-get install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
- && useradd -d /home/container -m container
- 
-USER container
-ENV  USER=container HOME=/home/container
+RUN	apk add --no-cache --update bash \
+	&& adduser -D -h /home/container container
 
-USER        container
-ENV         USER=container HOME=/home/container
+USER	container
+ENV	USER=container HOME=/home/container
 
-WORKDIR     /home/container
+WORKDIR	/home/container
 
-COPY        ./entrypoint.sh /entrypoint.sh
+COPY	./entrypoint.sh /entrypoint.sh
 
-CMD         ["/bin/bash", "/entrypoint.sh"]
+CMD	["/bin/bash", "/entrypoint.sh"]
