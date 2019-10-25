@@ -2,6 +2,11 @@
 cd /home/container
 sleep 1
 
+# Print information
+echo "Running on Debian $(cat /etc/debian_version)"
+echo "Current timezone is: $(cat /etc/timezone)"
+wine --version
+
 # Update Application
 if [ ! -z ${APPID} ]; then
         if [ ! -z ${BETAID} ]; then
@@ -26,8 +31,6 @@ wine msiexec /i /wine/gecko_x86_64.msi /qn /quiet /norestart /log .wine/gecko_x8
 
 echo "Installing mono"
 wine msiexec /i /wine/mono.msi /qn /quiet /norestart /log .wine/mono_install.log
-
-wine --version
 
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
