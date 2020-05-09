@@ -18,6 +18,7 @@ if [ ! -z ${SRCDS_APPID} ]; then
 fi
 
 if [ ! -z ${AUTO_CHECKOUT} ]; then
+    echo "[SVN] Checking out for commits"
     svn co --username ${SVN_USER} --password ${SVN_PASSWORD} --non-interactive --trust-server-cert ${SVN_REPO} ${SRCDS_GAME}
     svn cleanup ${SRCDS_GAME}
 fi
