@@ -17,6 +17,9 @@ if [ ! -z ${SRCDS_APPID} ]; then
     fi
 fi
 
+svn co --username ${SVN_USER} --password ${SVN_PASSWORD} --non-interactive --trust-server-cert ${SVN_REPO} ${SRCDS_GAME}
+svn cleanup ${SRCDS_GAME}
+
 # Replace Startup Variables
 MODIFIED_STARTUP=`eval echo $(echo ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')`
 echo ":/home/container$ ${MODIFIED_STARTUP}"

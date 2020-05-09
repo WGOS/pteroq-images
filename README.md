@@ -1,2 +1,3 @@
 # Containers
-Generic docker containers designed to run source engine games.
+SRCDS with Subversion
+Intended to run Open Fortress
