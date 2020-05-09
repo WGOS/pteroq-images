@@ -4,23 +4,16 @@ sleep 1
 # Make internal Docker IP address available to processes.
 export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
-# Update Source Server
-if [ ! -z ${SRCDS_APPID} ]; then
-    if [ ! -z ${SRCDS_BETAID} ]; then
-        if [ ! -z ${SRCDS_BETAPASS} ]; then
-            ./steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} -betapassword ${SRCDS_BETAPASS} +quit
-        else
-            ./steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} -beta ${SRCDS_BETAID} +quit
-        fi
-    else
-        ./steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update ${SRCDS_APPID} +quit
-    fi
-fi
+# Update SRCDS 2013
+./steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container +app_update 244310 +quit
+
+# Update TF2 DS
+./steamcmd/steamcmd.sh +login anonymous +force_install_dir /home/container/tf2ds +app_update 232250 +quit
 
 if [ ! -z ${AUTO_CHECKOUT} ]; then
     echo "[SVN] Checking out for commits"
-    svn co --username ${SVN_USER} --password ${SVN_PASSWORD} --non-interactive --trust-server-cert ${SVN_REPO} ${SRCDS_GAME}
-    svn cleanup ${SRCDS_GAME}
+    svn co --username ${SVN_USER} --password ${SVN_PASSWORD} --non-interactive --trust-server-cert ${SVN_REPO} open_fortress
+    svn cleanup open_fortress
 fi
 
 # Replace Startup Variables
