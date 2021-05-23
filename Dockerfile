@@ -3,12 +3,15 @@
 # Environment: Java (glibc support)
 # Minimum Panel Version: 0.6.0
 # ----------------------------------
-FROM        openjdk:11-slim
+FROM        azul/zulu-openjdk:11
 
-LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
+LABEL       author="WGOS" maintainer="admin@wgos.org"
 
-RUN apt-get update -y \
- && apt-get install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update -y \
+ && apt upgrade -y \
+ && apt install -y curl ca-certificates openssl git tar sqlite fontconfig tzdata iproute2 \
  && useradd -d /home/container -m container
  
 USER container
